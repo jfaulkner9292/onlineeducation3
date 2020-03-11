@@ -26,8 +26,20 @@ Template.hello.events({
 //import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
-import './js/jquery-3.2.1.min.js';
-//import './registrationNlogin.html';
+import './registrationNlogin.html';
+//import '../js/jquery-3.2.1.min.js';
+
+//Route.route('/registerNloginpage');
+
+Router.route('/', function() {
+    this.render('home');
+});
+
+Router.route('/registrationNlogin', function() {
+    this.render('registerNloginpage');
+});
+
+//
 
 /*Template.hello.onCreated(function helloOnCreated() {
   // counter starts at 0

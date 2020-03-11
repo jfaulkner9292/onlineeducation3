@@ -1,7 +1,8 @@
-<head>
+<!--<head>
   <title>onlineeducation</title>
-</head>
+</head>-->
 
+<!--<template name="home">-->
 <head>
 <title>Course Details</title>
 <meta charset="utf-8">
@@ -17,8 +18,15 @@
 <link rel="stylesheet" type="text/html" href="styles/course.css">
 <link rel="stylesheet" type="text/html" href="styles/course_responsive.css">
 </head>
-<body>
 
+
+<body>
+    {{> home}}
+    {{> hello}}
+    {{> info}}
+</body>
+
+<template name="home">
 <div class="super_container">
 
 	<!-- Header -->
@@ -44,7 +52,8 @@
 									</li>
 								</ul>
 								<div class="top_bar_login ml-auto">
-									<div class="login_button"><a href="registrationNlogin.html">Register or Login</a></div>
+									<!--<div class="login_button"><a href="registrationNlogin.html">Register or Login</a></div>-->
+                                                                        <div class="login_button"><a href="registrationNlogin">Register or Login</a></div>
 								</div>
 							</div>
 						</div>
@@ -186,7 +195,7 @@
 						</div>
 
 						<!-- Course Image -->
-						<div class="course_image"><img src="images/course_image.jpg" alt=""></div>
+						<div class="course_image"><img src="/images/course_image.jpg" alt=""></div>
 
 						<!-- Course Tabs -->
 						<div class="course_tabs_container">
@@ -729,8 +738,8 @@ Copyright &copy;<!--<script>document.write(new Date().getFullYear());</script>--
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="js/course.js"></script>
-</body>
-
+<!--</body>-->
+</template>
 
 
 
