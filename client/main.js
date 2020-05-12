@@ -22,8 +22,8 @@ Template.hello.events({
 });*/
 
 
-//import { Template } from 'meteor/templating';
-//import { ReactiveVar } from 'meteor/reactive-var';
+import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 import './registrationNlogin.html';
@@ -39,6 +39,22 @@ Router.route('/registrationNlogin', function() {
     this.render('registerNloginpage');
 });
 
+Template.registerNloginpage.events({
+	'click #buttonsubmitRegistrationForm':function(event)
+	{
+		console.log("In Button Registration");
+		var textName = document.getElementById('textName').value;
+		var textAddress = document.getElementById('textAddress').value;
+		var textDOB = document.getElementById('textDOB').value;
+
+		Meteor.call(insert_CollectionStudents, textName, textAddress, textDOB, function(err, res) 
+		{
+			if (err) console.log("mongoDB Error");
+			else console.log("Registration Successfull");
+		});	
+
+	}
+});
 //
 
 /*Template.hello.onCreated(function helloOnCreated() {
