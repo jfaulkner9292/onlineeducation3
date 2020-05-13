@@ -11,7 +11,7 @@ Meteor.startup(function()
 			console.log("in insert_CollectionStudents");
 			
 			var MongoClient = require('mongodb').MongoClient;
-			var url = "mongodb://localhost:27017"; //might be the wrong port. 27017 is the default
+			var url = 'mongodb://localhost:27017'; //might be the wrong port. 27017 is the default
 			
 			MongoClient.connect(url, function(err, db)
 			{
