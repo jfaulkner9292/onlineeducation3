@@ -47,7 +47,7 @@ Template.registerNloginpage.events({
 		var textAddress = document.getElementById('textAddress').value;
 		var textDOB = document.getElementById('textDOB').value;
 
-		Meteor.call(insert_CollectionStudents, textName, textAddress, textDOB, function(err, res) 
+		Meteor.call('insert_CollectionStudents', textName, textAddress, textDOB, function(err, res) 
 		{
 			if (err) console.log("mongoDB Error");
 			else console.log("Registration Successfull");
