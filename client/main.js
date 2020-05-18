@@ -27,6 +27,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 import './registrationNlogin.html';
+import './nameDB.html';
 //import '../js/jquery-3.2.1.min.js';
 
 //Route.route('/registerNloginpage');
@@ -37,6 +38,10 @@ Router.route('/', function() {
 
 Router.route('/registrationNlogin', function() {
     this.render('registerNloginpage');
+});
+
+Router.route('/nameDB', function() {
+	this.render('nameDBpage');
 });
 
 Template.registerNloginpage.events({
@@ -53,6 +58,20 @@ Template.registerNloginpage.events({
 			else console.log("Registration Successfull");
 		});	
 
+	}
+});
+
+Template.nameDBpage.events({
+	'click #buttonsubmitNameDB':function(event)
+	{
+		alert("In nameDB button");
+		var textName = document.getElementById('textName').value;
+
+		Meteor.call('query_Students_DOB', textName, function(err, res)
+		{
+			if (err) console.log("mongoDB Error");
+			else console.log("Registration Successfull");
+		});
 	}
 });
 //
