@@ -64,14 +64,39 @@ Template.registerNloginpage.events({
 Template.nameDBpage.events({
 	'click #buttonsubmitNameDB':function(event)
 	{
-		alert("In nameDB button");
+		//alert("In nameDB button");
 		var textName = document.getElementById('textName').value;
-
+		//alert(textName);
+		
 		Meteor.call('query_Students_DOB', textName, function(err, res)
 		{
-			if (err) console.log("mongoDB Error");
+			if (err) alert("mongoDB error"); //console.log("mongoDB Error");
 			else console.log("Registration Successfull");
+
+			//var returnedData = JSON.parse(res);
+			//alert(returnedData.textDOB[0].sub);
+			
+			var count = (res.match(/textDOB/g) || []).length;
+			//alert("Count: " + count);
+			var DOBS = [count];
+			var tempText = res;
+			var startingIndex;
+			var endingInxed;
+			//alert("size: " + DOBS.length);
+			for (i = 0; i < count; i++)
+			{
+				
+				startingIndex = tempText.indexOf("textDOB");
+				endingIndex = tempText.indexOf("}");
+				DOBS[i] = tempText.substring(startingIndex + 10, endingIndex - 1); 
+				//alert("Dob: " + DOBS[i]);
+				document.getElementById('textDateOfBirths').innerHTML = DOBS[i];
+				tempText = tempText.substring(endingIndex + 1);
+			}
+			//alert(returnedData[0]);
 		});
+		console.log("back in client");
+		
 	}
 });
 //

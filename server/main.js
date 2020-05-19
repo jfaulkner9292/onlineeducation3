@@ -47,8 +47,10 @@ Meteor.startup(function()
 
 			if (MongoClient == null)
 				console.log("Null");
-
+																	//line 50
 			var url = 'mongodb://localhost:27017'; //might be the wrong port. 27017 is the default
+
+			var future = new Future();
 			
 			MongoClient.connect(url, function(err, db)
 			{
@@ -57,8 +59,8 @@ Meteor.startup(function()
 				{
 					"textName": textName
 					
-				}
-				var dbo = db.db("myOnlineEducationDatabase")
+				}													//line 60
+				var dbo = db.db("myOnlineEducationDatabase")								
 				dbo.collection("Student").find(myobj).toArray(function(err, result)
 				{
 					if (err) throw err;
@@ -67,15 +69,15 @@ Meteor.startup(function()
 					for (var entry in result)
 					{
 						output += result[entry] + "\n"
-					}
-
+					}												//line 70
+																	
 					future.return(JSON.stringify(result));
-					alert("Finished client side query");
+					//console.log("Finished server side query: " + JSON.stringify(result));
 					db.close();
 				});//Student is the name of the collection
 			});
-		
-		return future.wait();
+			//console.log("was here");
+			return future.wait();
 		}
 
 
