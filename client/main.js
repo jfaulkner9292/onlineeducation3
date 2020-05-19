@@ -82,6 +82,8 @@ Template.nameDBpage.events({
 			var tempText = res;
 			var startingIndex;
 			var endingInxed;
+			var output = "";
+			var newOutput = "";
 			//alert("size: " + DOBS.length);
 			for (i = 0; i < count; i++)
 			{
@@ -90,9 +92,15 @@ Template.nameDBpage.events({
 				endingIndex = tempText.indexOf("}");
 				DOBS[i] = tempText.substring(startingIndex + 10, endingIndex - 1); 
 				//alert("Dob: " + DOBS[i]);
-				document.getElementById('textDateOfBirths').innerHTML = DOBS[i];
+				output = output.concat(DOBS[i] + ", ");
 				tempText = tempText.substring(endingIndex + 1);
 			}
+			//newOutput = output.replace(/.$/,".");
+			newOutput = output.substring(0, output.length - 2);
+			if (newOutput.length != 0)			
+				document.getElementById('textDateOfBirths').innerHTML = newOutput;
+			else
+				document.getElementById('textDateOfBirths').innerHTML = "No date of births found for '" + textName + "'.";
 			//alert(returnedData[0]);
 		});
 		console.log("back in client");

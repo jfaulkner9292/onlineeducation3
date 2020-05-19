@@ -42,7 +42,7 @@ Meteor.startup(function()
 		
 		query_Students_DOB: function(textName)
 		{
-			console.log("in query_Students_DOB");
+			//console.log("in query_Students_DOB");
 			var MongoClient = require('mongodb').MongoClient;
 
 			if (MongoClient == null)
